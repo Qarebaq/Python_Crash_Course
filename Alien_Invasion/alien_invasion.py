@@ -1,13 +1,14 @@
 import sys
 import pygame
 from settings import Settings
-
+from ship import Ship
 class AlienInvasion:
     def __init__(self):
         pygame.init()
         self.clock = pygame.time.Clock()
         # self.screen = pygame.display.set_mode((1200,800))
-        # pygame.display.set_caption("Alien Invasion")
+        pygame.display.set_caption("Alien Invasion")
+        self.ship = Ship(self)
         # self.bg_color = (230,230,230)
         self.settings = Settings()
 
@@ -21,6 +22,8 @@ class AlienInvasion:
                     sys.exit()
             # self.screen.fill(self.bg_color)
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
+
             pygame.display.flip()
             self.clock.tick(60)
 
