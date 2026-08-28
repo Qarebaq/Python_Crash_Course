@@ -4,7 +4,7 @@ import pygame
 class AlienInvasion:
     def __init__(self):
         pygame.init()
-
+        self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((1200,800))
         pygame.display.set_caption("Alien Invasion")
 
@@ -15,6 +15,7 @@ class AlienInvasion:
                     sys.exit()
 
         pygame.display.flip()
+        self.clock.tick(60)
 
 
 if __name__ == '__main__':
