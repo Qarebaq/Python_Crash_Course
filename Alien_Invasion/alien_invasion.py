@@ -24,6 +24,7 @@ class AlienInvasion:
             # self.screen.fill(self.bg_color)
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
     def _check_events(self):
@@ -57,6 +58,8 @@ class AlienInvasion:
             for bullet in self.bullets.copy():
                 if bullet.rect.bottom <=0:
                     self.bullets.remove(bullet)
+    def _update_aliens(self):
+        self.aliens.update()
     def _create_fleet(self):
         alien = Alien(self)
         self.aliens.add(alien)
