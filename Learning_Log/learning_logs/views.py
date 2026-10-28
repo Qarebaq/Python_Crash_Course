@@ -52,4 +52,4 @@ def new_entry(request, topic_id):
             new_entry.save()
             return redirect('learning_logs:topic', topic_id=topic_id)
     context = {'topic':topic, 'form':form}
-    return render(request, 'learning_logs/new_enrty.html', context)
+    return render(request, 'learning_logs/new_entry.html', context)
