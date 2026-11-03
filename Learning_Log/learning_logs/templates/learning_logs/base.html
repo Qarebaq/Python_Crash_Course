@@ -10,6 +10,7 @@
     <button type="submit">Log out</button>
     <p>Hello, {{ user.username }}!</p>
 {% else %}
+    <a href="{% url 'accounts:register' %}">Register</a>
     <p><a href="{% url 'accounts:login' %}">Log in</a></p>
 {% endif %}
 
