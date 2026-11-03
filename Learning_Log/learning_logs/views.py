@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect
 
 from .models import Topic ,Entry
 from .forms import TopicForm,EntryForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     """the home page for learning log"""
     return render(request, 'learning_logs/index.html')
 
+@login_required
 def topics(request):
     """show all topics"""
     topics = Topic.objects.order_by('date_added')
