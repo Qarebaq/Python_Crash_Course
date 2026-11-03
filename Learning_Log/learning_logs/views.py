@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Topic ,Entry
 from .forms import TopicForm,EntryForm
 from django.contrib.auth.decorators import login_required
-
+from django.http import Http404
 def index(request):
     """the home page for learning log"""
     return render(request, 'learning_logs/index.html')
@@ -20,6 +20,8 @@ def topics(request):
 def topic(request, topic_id):
     """show a single topic and all its entries"""
     topic = Topic.objects.get(id=topic_id)
+    if topic.owner != request.user:
+        raise Http404
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic':topic,'entries':entries}
     return render(request, "learning_logs/topic.html",context)
